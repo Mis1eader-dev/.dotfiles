@@ -53,6 +53,7 @@ sudo apt install -y ninja-build
 
 # Clangd for Neovim
 sudo apt install -y clangd-15
+sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-15 100
 
 # Node.js for Coc
 if ! which node > /dev/null; then
