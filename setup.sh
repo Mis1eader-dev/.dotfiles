@@ -24,15 +24,15 @@ sudo apt install -y libfuse2
 sudo apt install -y tmux
 
 # Tmux theme
-TMUX_THEME_DIR = ~/.local/share/tmux/plugins/tmux-themepack
-if ! -d "$TMUX_THEME_DIR"; then
+TMUX_THEME_DIR=~/.local/share/tmux/plugins/tmux-themepack
+if ! -d $TMUX_THEME_DIR; then
 	git clone https://github.com/jimeh/tmux-themepack.git $TMUX_THEME_DIR
 fi
 
 
 # Neovim
-NEOVIM_PATH = /usr/bin/nvim
-if ! -f "$NEOVIM_PATH"; then
+NEOVIM_PATH=/usr/bin/nvim
+if ! -f $NEOVIM_PATH; then
 	sudo curl -o $NEOVIM_PATH https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 fi
 
