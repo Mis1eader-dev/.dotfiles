@@ -1,0 +1,16 @@
+InlayHints:
+  Enabled: No
+
+---
+
+If:
+  PathMatch: [.*\.c, .*\.h]
+CompileFlags:
+  Compile: gcc
+
+---
+
+If:
+  PathMatch: [.*\.cpp, .*\.hpp, .*\.h]
+CompileFlags:
+  Compiler: g++

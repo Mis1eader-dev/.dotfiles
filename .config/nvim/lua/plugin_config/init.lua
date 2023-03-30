@@ -1,0 +1,6 @@
+require("plugin_config.vscode")
+require("plugin_config.coc")
+require("plugin_config.treesitter")
+require("plugin_config.lualine")
+require("plugin_config.nvim-web-devicons")
+require("plugin_config.tabline")

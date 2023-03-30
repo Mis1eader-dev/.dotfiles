@@ -1,0 +1,17 @@
+{
+	"codeLens.enable": true,
+	"colors.enable": true,
+	"diagnostic.checkCurrentLine": true,
+	"diagnostic.infoSign": "i",
+	"diagnostic.hintSign": "?",
+	"diagnostic.refreshOnInsertMode": true,
+	"diagnostic.virtualText": true,
+	"diagnostic.virtualTextCurrentLineOnly": false,
+	"diagnostic.enableMessage": "never",
+	"snippets.ultisnips.pythonPrompt": false,
+	"coc.preferences.jumpCommand": "tab drop",
+	"pairs.disableLanguages": [
+		"html"
+	],
+	"coc.preferences.enableLinkedEditing": true
+}
