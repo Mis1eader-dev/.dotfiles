@@ -1,3 +1,3 @@
-require("plugin_config")
-require("plugins")
 require("config")
+require("plugins")
+require("plugin_config")
