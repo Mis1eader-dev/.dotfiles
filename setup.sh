@@ -62,7 +62,7 @@ if ! which node > /dev/null; then
 fi
 
 # Neovim Packer and Plugins
-nvim --headless +PackerSync +qa
+nvim --headless -c "autocmd User PackerComplete qa" -c "silent PackerSync"
 
 # Neovim Coc Extensions
 sudo apt install -y jq
