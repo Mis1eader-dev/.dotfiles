@@ -65,7 +65,11 @@ fi
 nvim
 
 # Neovim Coc Extensions
-#nvim -c "CocUpdate"
+NEOVIM_COC_EXTENSIONS=$(jq '.dependencies | keys' ~/.config/coc/extensions/package.json | 
+	sed 's/\[*\]*\s*"*//g' |
+	tr -d '\n' |
+	tr ',' ' ')
+nvim -c "CocInstall $NEOVIM_COC_EXTENSIONS"
 
 # Apply .bashrc
 source ~/.bashrc
