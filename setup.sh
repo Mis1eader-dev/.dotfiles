@@ -70,10 +70,10 @@ NEOVIM_COC_EXTENSIONS=$(jq '.dependencies | keys' ~/.config/coc/extensions/packa
 	sed 's/\[*\]*\s*"*//g' |
 	tr -d '\n' |
 	tr ',' ' ')
-nvim -c "CocInstall $NEOVIM_COC_EXTENSIONS"
-
-# Apply .bashrc
-source ~/.bashrc
+nvim --headless +"CocInstall -sync $NEOVIM_COC_EXTENSIONS|qa"
 
 # Don't show untracked files
-#dotfiles config status.showUntrackedFiles no
+git --git-dir=$HOME/.dotfiles --work-tree=$HOME config status.showUntrackedFiles no
+
+echo "Setup complete"
+echo "Make sure to source the bashrc: source ~/.bashrc"

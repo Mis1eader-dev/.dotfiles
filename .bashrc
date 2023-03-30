@@ -8,7 +8,7 @@ alias v=nvim
 alias see="/mnt/c/Windows/explorer.exe"
 
 # To not make accidental operations on home directory, we have a bare repo
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 # Run our user from tmux
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
