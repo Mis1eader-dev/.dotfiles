@@ -65,6 +65,7 @@ fi
 nvim
 
 # Neovim Coc Extensions
+sudo apt install -y jq
 NEOVIM_COC_EXTENSIONS=$(jq '.dependencies | keys' ~/.config/coc/extensions/package.json | 
 	sed 's/\[*\]*\s*"*//g' |
 	tr -d '\n' |
