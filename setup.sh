@@ -31,10 +31,12 @@ fi
 
 
 # Neovim
-NEOVIM_PATH=/usr/bin/nvim
+NEOVIM_BIN_DIR=/usr/bin
+NEOVIM_PATH=$NEOVIM_BIN_DIR/nvim
 if ! test -f $NEOVIM_PATH; then
-	sudo curl -o $NEOVIM_PATH https://github.com/neovim/neovim/releases/latest/download/nvim.appimage &&\
-	sudo chmod +x $NEOVIM_PATH
+	sudo wget -P $NEOVIM_BIN_DIR https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+	sudo chmod +x $NEOVIM_BIN_DIR/nvim.appimage
+	sudo mv $NEOVIM_BIN_DIR/nvim.appimage $NEOVIM_PATH
 fi
 
 
@@ -68,4 +70,4 @@ nvim
 source ~/.bashrc
 
 # Don't show untracked files
-dotfiles config status.showUntrackedFiles no
+#dotfiles config status.showUntrackedFiles no
