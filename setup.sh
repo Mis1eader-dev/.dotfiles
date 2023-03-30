@@ -24,15 +24,17 @@ sudo apt install -y libfuse2
 sudo apt install -y tmux
 
 # Tmux theme
-git clone https://github.com/jimeh/tmux-themepack.git ~/.config/tmux/plugins/tmux-themepack
-
+TMUX_THEME_DIR = ~/.local/share/tmux/plugins/tmux-themepack
+if ! -d $TMUX_THEME_DIR; then
+	git clone https://github.com/jimeh/tmux-themepack.git $TMUX_THEME_DIR
+fi
 
 
 # Neovim
-sudo wget -P /usr/bin/ https://github.com/neovim/neovim/releases/latest/download/nvim.appimage &&\
-sudo chmod +x /usr/bin/nvim.appimage &&\
-sudo mv /usr/bin/nvim.appimage /usr/bin/nvim
-
+NEOVIM_PATH = /usr/bin/nvim
+if ! -f $NEOVIM_PATH; then
+	sudo curl -o $NEOVIM_PATH https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+fi
 
 
 # g++
@@ -50,11 +52,19 @@ sudo apt install -y ninja-build
 sudo apt install -y clangd-15
 
 # Node.js for Coc
-curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
-sudo apt install -y nodejs
+if ! which node > /dev/null; then
+	curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
+	sudo apt install -y nodejs
+fi
 
 # Neovim Packer and Plugins
 nvim
 
 # Neovim Coc Extensions
-nvim -c "CocUpdate"
+#nvim -c "CocUpdate"
+
+# Apply .bashrc
+source ~/.bashrc
+
+# Don't show untracked files
+dotfiles config status.showUntrackedFiles no
