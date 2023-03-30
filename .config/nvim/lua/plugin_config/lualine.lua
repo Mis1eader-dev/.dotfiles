@@ -1,4 +1,10 @@
-require('lualine').setup {
+local hasModule, module = pcall(require, 'lualine')
+
+if not hasModule then
+	return
+end
+
+module.setup {
   options = {
     icons_enabled = true,
     theme = 'auto',

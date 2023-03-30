@@ -1,4 +1,10 @@
-require'nvim-web-devicons'.setup {
+local hasModule, module = pcall(require, 'nvim-web-devicons')
+
+if not hasModule then
+	return
+end
+
+module.setup {
  -- your personnal icons can go here (to override)
  -- you can specify color or cterm_color instead of specifying both of them
  -- DevIcon will be appended to `name`

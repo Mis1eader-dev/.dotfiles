@@ -4,8 +4,14 @@ vim.o.background = 'dark'
 -- For light theme
 -- vim.o.background = 'light'
 
-local c = require('vscode.colors').get_colors()
-require('vscode').setup({
+local hasModule, module = pcall(require, 'vscode')
+
+if not hasModule then
+	return
+end
+
+--local c = require('vscode.colors').get_colors()
+module.setup({
     -- Alternatively set style in setup
     -- style = 'light'
 
@@ -30,4 +36,4 @@ require('vscode').setup({
     --    Cursor = { fg=c.vscDarkBlue, bg=c.vscLightGreen, bold=true },
     --}
 })
-require('vscode').load()
+module.load()

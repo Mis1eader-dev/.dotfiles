@@ -1,4 +1,10 @@
-require'tabline'.setup {
+local hasModule, module = pcall(require, 'tabline')
+
+if not hasModule then
+	return
+end
+
+module.setup {
   -- Defaults configuration options
   enable = true,
   options = {
