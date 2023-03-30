@@ -25,15 +25,16 @@ sudo apt install -y tmux
 
 # Tmux theme
 TMUX_THEME_DIR=~/.local/share/tmux/plugins/tmux-themepack
-if ! -d $TMUX_THEME_DIR; then
+if ! test -d $TMUX_THEME_DIR; then
 	git clone https://github.com/jimeh/tmux-themepack.git $TMUX_THEME_DIR
 fi
 
 
 # Neovim
 NEOVIM_PATH=/usr/bin/nvim
-if ! -f $NEOVIM_PATH; then
-	sudo curl -o $NEOVIM_PATH https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+if ! test -f $NEOVIM_PATH; then
+	sudo curl -o $NEOVIM_PATH https://github.com/neovim/neovim/releases/latest/download/nvim.appimage &&\
+	sudo chmod +x $NEOVIM_PATH
 fi
 
 
