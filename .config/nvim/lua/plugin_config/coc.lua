@@ -1,4 +1,4 @@
-if not packer_plugins or not packer_plugins['coc.nvim'] or not packer_plugins['coc.nvim'].loaded then
+if not vim.fn.executable('h coc-config') then
 	return
 end
 

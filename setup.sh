@@ -1,8 +1,16 @@
 #Make sure everything is up to date
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt autoremove -y
-
+echo "Update everything before we start?"
+select yn in "Yes" "No";
+do
+	case $yn in
+		Yes )
+			sudo apt update -y
+			sudo apt upgrade -y
+			sudo apt autoremove -y
+			break;;
+		No ) break;;
+	esac
+done
 
 
 # OpenSSL
@@ -21,13 +29,22 @@ sudo apt install -y libfuse2
 
 
 # Tmux
-sudo apt install -y tmux
+echo "Install Tmux?"
+select yn in "Yes" "No";
+do
+	case $yn in
+		Yes )
+			sudo apt install -y tmux
 
-# Tmux theme
-TMUX_THEME_DIR=~/.local/share/tmux/plugins/tmux-themepack
-if ! test -d $TMUX_THEME_DIR; then
-	git clone https://github.com/jimeh/tmux-themepack.git $TMUX_THEME_DIR
-fi
+			# Tmux theme
+			TMUX_THEME_DIR=~/.local/share/tmux/plugins/tmux-themepack
+			if ! test -d $TMUX_THEME_DIR; then
+				git clone https://github.com/jimeh/tmux-themepack.git $TMUX_THEME_DIR
+			fi
+			break;;
+		No ) break;;
+	esac
+done
 
 
 # Neovim
@@ -62,7 +79,7 @@ if ! which node > /dev/null; then
 fi
 
 # Neovim Packer and Plugins
-nvim --headless -c "autocmd User PackerComplete qa" -c "PackerSync"
+nvim --headless +"autocmd User PackerComplete qa" +"PackerSync"
 
 # Neovim Coc Extensions
 sudo apt install -y jq

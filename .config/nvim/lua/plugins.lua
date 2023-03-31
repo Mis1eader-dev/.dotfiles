@@ -25,6 +25,8 @@ return require('packer').startup(function(use)
 	  'kdheepak/tabline.nvim',
 	  requires = { { 'nvim-lualine/lualine.nvim', opt = true }, { 'nvim-tree/nvim-web-devicons', opt = true } }
   }
+  --use 'paretje/nvim-man'
+  use 'vim-utils/vim-man'
   -- My plugins here
   -- use 'foo1/bar1.nvim'
   -- use 'foo2/bar2.nvim'
