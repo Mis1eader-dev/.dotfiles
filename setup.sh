@@ -29,6 +29,14 @@ sudo apt install -y libfuse2
 
 
 # Tmux
+function install_tmux_theme()
+{
+	# Tmux theme
+	TMUX_THEME_DIR=~/.local/share/tmux/plugins/tmux-themepack
+	if ! test -d $TMUX_THEME_DIR; then
+		git clone https://github.com/jimeh/tmux-themepack.git $TMUX_THEME_DIR
+	fi
+}
 if ! which tmux > /dev/null; then
 	echo "Install Tmux?"
 	select yn in "Yes" "No";
@@ -36,16 +44,13 @@ if ! which tmux > /dev/null; then
 		case $yn in
 			Yes )
 				sudo apt install -y tmux
-
-				# Tmux theme
-				TMUX_THEME_DIR=~/.local/share/tmux/plugins/tmux-themepack
-				if ! test -d $TMUX_THEME_DIR; then
-					git clone https://github.com/jimeh/tmux-themepack.git $TMUX_THEME_DIR
-				fi
+				install_tmux_theme
 				break;;
 			No ) break;;
 		esac
 	done
+else
+	install_tmux_theme
 fi
 
 # Neovim
@@ -80,7 +85,9 @@ if ! which node > /dev/null; then
 fi
 
 # Neovim Packer and Plugins
-nvim --headless +"autocmd User PackerComplete qa" +"PackerSync"
+echo "Installing Neovim plugins"
+nvim --headless +"silent autocmd User PackerComplete qa"
+nvim --headless +"silent autocmd User PackerComplete qa" +"silent PackerSync"
 
 # Neovim Coc Extensions
 sudo apt install -y jq
@@ -88,6 +95,7 @@ NEOVIM_COC_EXTENSIONS=$(jq '.dependencies | keys' ~/.config/coc/extensions/packa
 	sed 's/\[*\]*\s*"*//g' |
 	tr -d '\n' |
 	tr ',' ' ')
+echo "Installing Neovim Coc extensions"
 nvim --headless +"CocInstall -sync $NEOVIM_COC_EXTENSIONS|qa"
 
 # Don't show untracked files
