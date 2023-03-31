@@ -5,7 +5,8 @@ export EDITOR="nvim"
 alias v=nvim
 
 # This is to allow explorer to be launched from here
-alias see="/mnt/c/windows/explorer.exe"
+export BROWSER="/mnt/c/windows/explorer.exe"
+alias see=$BROWSER
 
 # To not make accidental operations on home directory, we have a bare repo
 alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
