@@ -86,8 +86,8 @@ fi
 
 # Neovim Packer and Plugins
 echo "Installing Neovim plugins"
-nvim --headless +"silent autocmd User PackerComplete qa"
-nvim --headless +"silent autocmd User PackerComplete qa" +"silent PackerSync"
+nvim --headless +"autocmd User PackerComplete qa"
+nvim --headless +"autocmd User PackerComplete qa" +"silent PackerSync"
 
 # Neovim Coc Extensions
 sudo apt install -y jq
@@ -101,5 +101,5 @@ nvim --headless +"CocInstall -sync $NEOVIM_COC_EXTENSIONS|qa"
 # Don't show untracked files
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME config status.showUntrackedFiles no
 
-echo "Setup complete"
-echo "Make sure to source the bashrc twice: source ~/.bashrc"
+echo -e "\nSetup complete"
+echo -e "Make sure to source the bashrc twice: source ~/.bashrc\n"
