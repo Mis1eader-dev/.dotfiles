@@ -156,7 +156,7 @@ fi
 
 
 # If at least one programming language is selected
-if ! -z $COC_EXTENSIONS; then
+if ! [ -z $COC_EXTENSIONS ]; then
 	COC_DEFAULT_EXTENSIONS+=" coc-snippets"
 fi
 
