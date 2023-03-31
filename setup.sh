@@ -188,10 +188,11 @@ fi
 # Neovim Packer and Plugins
 echo "Installing Neovim plugins"
 nvim --headless +"autocmd User PackerComplete qa"
+echo
 nvim --headless +"autocmd User PackerComplete qa" +"silent PackerSync"
 
 # Neovim Coc Extensions
-echo "Installing Neovim Coc extensions"
+echo -e "\nInstalling Neovim Coc extensions: $COC_DEFAULT_EXTENSIONS$COC_EXTENSIONS"
 nvim --headless +"CocInstall -sync $COC_DEFAULT_EXTENSIONS$COC_EXTENSIONS|qa"
 
 
