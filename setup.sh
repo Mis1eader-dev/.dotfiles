@@ -71,7 +71,11 @@ COC_DEFAULT_EXTENSIONS="coc-json coc-yaml coc-pairs"
 COC_EXTENSIONS=""
 
 # C/C++ and build tools
-if ! which g++ > /dev/null || ! which cmake > /dev/null || ! which ninja > /dev/null; then
+function install_c_cpp()
+{
+	COC_EXTENSIONS+=" coc-clangd coc-cmake"
+}
+if ! which g++ > /dev/null || ! which cmake > /dev/null || ! which ninja > /dev/null || ! which clangd > /dev/null; then
 	echo "Install C/C++, CMake, and Ninja?"
 	select yn in "Yes" "No";
 	do
@@ -90,17 +94,23 @@ if ! which g++ > /dev/null || ! which cmake > /dev/null || ! which ninja > /dev/
 				sudo apt install -y clangd-15
 				sudo update-alternatives --install $BIN_DIR/clangd clangd $BIN_DIR/clangd-15 100
 
-				COC_EXTENSIONS+=" coc-clangd coc-cmake"
+				install_c_cpp
 
 				break;;
 			No ) break;;
 		esac
 	done
+else
+	install_c_cpp
 fi
 
 
 
 # Java
+function install_java()
+{
+	COC_EXTENSIONS+=" coc-java"
+}
 if ! which java > /dev/null || ! which javac > /dev/null; then
 	echo "Install Java?"
 	select yn in "Yes" "No";
@@ -110,12 +120,14 @@ if ! which java > /dev/null || ! which javac > /dev/null; then
 				# OpenJDK
 				sudo apt install -y openjdk-19-jdk-headless
 
-				COC_EXTENSIONS+=" coc-java"
+				install_java
 
 				break;;
 			No ) break;;
 		esac
 	done
+else
+	install_java
 fi
 
 
@@ -136,6 +148,10 @@ done
 
 
 # Python
+function install_python()
+{
+	COC_EXTENSIONS+=" coc-pyright"
+}
 if ! which python > /dev/null; then
 	echo "Install Python?"
 	select yn in "Yes" "No";
@@ -145,12 +161,14 @@ if ! which python > /dev/null; then
 				# Python
 				sudo apt install -y python
 
-				COC_EXTENSIONS+=" coc-pyright"
+				install_python
 
 				break;;
 			No ) break;;
 		esac
 	done
+else
+	install_python
 fi
 
 
