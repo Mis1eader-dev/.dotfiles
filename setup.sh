@@ -159,7 +159,8 @@ if ! which python > /dev/null; then
 		case $yn in
 			Yes )
 				# Python
-				sudo apt install -y python
+				sudo apt install -y python3
+				sudo ln -s /bin/python3 /bin/python
 
 				install_python
 
