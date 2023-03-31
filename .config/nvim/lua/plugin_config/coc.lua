@@ -1,3 +1,9 @@
+local hasModule, module = pcall(require, 'coc')
+
+if not hasModule then
+	return
+end
+
 -- Some servers have issues with backup files, see #649
 vim.opt.backup = false
 vim.opt.writebackup = false

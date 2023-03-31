@@ -62,7 +62,7 @@ if ! which node > /dev/null; then
 fi
 
 # Neovim Packer and Plugins
-nvim --headless -c "autocmd User PackerComplete qa" -c "PackerUpdate|PackerCompile"
+nvim --headless -c "autocmd User PackerComplete qa" -c "PackerSync"
 
 # Neovim Coc Extensions
 sudo apt install -y jq
@@ -76,4 +76,4 @@ nvim --headless +"CocInstall -sync $NEOVIM_COC_EXTENSIONS|qa"
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME config status.showUntrackedFiles no
 
 echo "Setup complete"
-echo "Make sure to source the bashrc: source ~/.bashrc"
+echo "Make sure to source the bashrc twice: source ~/.bashrc"
