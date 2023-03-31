@@ -49,6 +49,9 @@ fi
 # OpenSSL
 sudo apt install -y libssl-dev
 
+# Curl
+sudo apt install -y curl
+
 # wget
 sudo apt install -y wget
 
@@ -186,14 +189,8 @@ nvim --headless +"autocmd User PackerComplete qa"
 nvim --headless +"autocmd User PackerComplete qa" +"silent PackerSync"
 
 # Neovim Coc Extensions
-#sudo apt install -y jq sed
-#COC_EXTENSIONS=$(jq '.dependencies | keys' ~/.config/coc/extensions/package.json | 
-#	sed 's/\[*\]*\s*"*//g' |
-#	tr -d '\n' |
-#	tr ',' ' ')
 echo "Installing Neovim Coc extensions"
 nvim --headless +"CocInstall -sync $COC_DEFAULT_EXTENSIONS$COC_EXTENSIONS|qa"
-#nvim --headless +"CocInstall -sync $COC_EXTENSIONS|qa"
 
 # Don't show untracked files
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME config status.showUntrackedFiles no
