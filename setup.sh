@@ -95,13 +95,15 @@ fi
 
 
 # Languages and Coc Extensions
-COC_DEFAULT_EXTENSIONS="coc-json coc-yaml coc-pairs"
-COC_EXTENSIONS=""
+COC_EXTENSIONS="coc-json coc-yaml coc-pairs coc-snippets"
+# Treesitters
+TREESITTERS="json yaml"
 
 # C/C++ and build tools
 install_c_cpp()
 {
 	COC_EXTENSIONS+=" coc-clangd coc-cmake"
+	TREESITTERS+=" c cpp cmake"
 }
 if ! which g++ > /dev/null || ! which cmake > /dev/null || ! which ninja > /dev/null || ! which clangd > /dev/null; then
 	if ask "Install C/C++, CMake, and Ninja?" Y; then
@@ -133,6 +135,7 @@ fi
 install_java()
 {
 	COC_EXTENSIONS+=" coc-java"
+	TREESITTERS+=" java"
 }
 if ! which java > /dev/null || ! which javac > /dev/null; then
 	if ask "Install Java?" Y; then
@@ -150,6 +153,7 @@ fi
 # HTML CSS JS
 if ask "Install HTML, CSS, and JS?" Y; then
 	COC_EXTENSIONS+=" coc-html coc-css coc-tsserver coc-emmet"
+	TREESITTERS+=" html css javascript typescript"
 fi
 
 
@@ -157,6 +161,7 @@ fi
 install_python()
 {
 	COC_EXTENSIONS+=" coc-pyright"
+	TREESITTERS+=" python"
 }
 if ! which python > /dev/null; then
 	if ask "Install Python?" Y; then
@@ -168,13 +173,6 @@ if ! which python > /dev/null; then
 	fi
 else
 	install_python
-fi
-
-
-
-# If at least one programming language is selected
-if ! [ -z "$COC_EXTENSIONS" ]; then
-	COC_DEFAULT_EXTENSIONS+=" coc-snippets"
 fi
 
 
@@ -192,8 +190,14 @@ echo
 nvim --headless +"autocmd User PackerComplete qa" +"silent PackerSync"
 
 # Neovim Coc Extensions
-echo -e "\nInstalling Neovim Coc extensions: $COC_DEFAULT_EXTENSIONS$COC_EXTENSIONS"
-nvim --headless +"CocInstall -sync $COC_DEFAULT_EXTENSIONS$COC_EXTENSIONS|qa"
+echo -e "\nInstalling Neovim Coc extensions: $COC_EXTENSIONS"
+nvim --headless +"CocInstall -sync $COC_EXTENSIONS|qa"
+
+
+
+# Neovimm Treesitters
+echo -e "\nInstalling Neovim Treesitters: $TREESITTERS"
+nvim +"TSInstallSync $TREESITTERS|qa"
 
 
 

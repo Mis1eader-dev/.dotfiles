@@ -1,4 +1,4 @@
-if not vim.fn.executable('h coc-config') then
+if not vim.fn.executable('CocInfo') then
 	return
 end
 
