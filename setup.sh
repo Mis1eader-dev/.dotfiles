@@ -29,23 +29,24 @@ sudo apt install -y libfuse2
 
 
 # Tmux
-echo "Install Tmux?"
-select yn in "Yes" "No";
-do
-	case $yn in
-		Yes )
-			sudo apt install -y tmux
+if ! which tmux > /dev/null; then
+	echo "Install Tmux?"
+	select yn in "Yes" "No";
+	do
+		case $yn in
+			Yes )
+				sudo apt install -y tmux
 
-			# Tmux theme
-			TMUX_THEME_DIR=~/.local/share/tmux/plugins/tmux-themepack
-			if ! test -d $TMUX_THEME_DIR; then
-				git clone https://github.com/jimeh/tmux-themepack.git $TMUX_THEME_DIR
-			fi
-			break;;
-		No ) break;;
-	esac
-done
-
+				# Tmux theme
+				TMUX_THEME_DIR=~/.local/share/tmux/plugins/tmux-themepack
+				if ! test -d $TMUX_THEME_DIR; then
+					git clone https://github.com/jimeh/tmux-themepack.git $TMUX_THEME_DIR
+				fi
+				break;;
+			No ) break;;
+		esac
+	done
+fi
 
 # Neovim
 NEOVIM_BIN_DIR=/usr/bin
