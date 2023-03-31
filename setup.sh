@@ -1,16 +1,49 @@
+# Prompt for Yes/No (Ref: https://gist.github.com/karancode/f43bc93f9e47f53e71fa29eed638243c)
+ask() {
+    local prompt default reply
+
+    if [[ ${2:-} = 'Y' ]]; then
+        prompt='Y/n'
+        default='Y'
+    elif [[ ${2:-} = 'N' ]]; then
+        prompt='y/N'
+        default='N'
+    else
+        prompt='y/n'
+        default=''
+    fi
+
+    while true; do
+
+        # Ask the question (not using "read -p" as it uses stderr not stdout)
+        echo -n "$1 [$prompt] "
+
+        # Read the answer (use /dev/tty in case stdin is redirected from somewhere else)
+        read -r reply </dev/tty
+
+        # Default?
+        if [[ -z $reply ]]; then
+            reply=$default
+        fi
+
+        # Check if the reply is valid
+        case "$reply" in
+            Y*|y*) return 0 ;;
+            N*|n*) return 1 ;;
+        esac
+
+    done
+}
+
+
+
 #Make sure everything is up to date
-echo "Update everything before we start?"
-select yn in "Yes" "No";
-do
-	case $yn in
-		Yes )
-			sudo apt update -y
-			sudo apt upgrade -y
-			sudo apt autoremove -y
-			break;;
-		No ) break;;
-	esac
-done
+if ask "Update everything before we start?" Y ; then
+	sudo apt update -y
+	sudo apt upgrade -y
+	sudo apt autoremove -y
+fi
+
 
 
 # OpenSSL
@@ -29,7 +62,7 @@ sudo apt install -y libfuse2
 
 
 # Tmux
-function install_tmux_theme()
+install_tmux_theme()
 {
 	# Tmux theme
 	TMUX_THEME_DIR=~/.local/share/tmux/plugins/tmux-themepack
@@ -38,17 +71,10 @@ function install_tmux_theme()
 	fi
 }
 if ! which tmux > /dev/null; then
-	echo "Install Tmux?"
-	select yn in "Yes" "No";
-	do
-		case $yn in
-			Yes )
-				sudo apt install -y tmux
-				install_tmux_theme
-				break;;
-			No ) break;;
-		esac
-	done
+	if ask "Install Tmux?" Y; then
+		sudo apt install -y tmux
+		install_tmux_theme
+	fi
 else
 	install_tmux_theme
 fi
@@ -71,35 +97,27 @@ COC_DEFAULT_EXTENSIONS="coc-json coc-yaml coc-pairs"
 COC_EXTENSIONS=""
 
 # C/C++ and build tools
-function install_c_cpp()
+install_c_cpp()
 {
 	COC_EXTENSIONS+=" coc-clangd coc-cmake"
 }
 if ! which g++ > /dev/null || ! which cmake > /dev/null || ! which ninja > /dev/null || ! which clangd > /dev/null; then
-	echo "Install C/C++, CMake, and Ninja?"
-	select yn in "Yes" "No";
-	do
-		case $yn in
-			Yes )
-				# g++
-				sudo apt install -y g++
+	if ask "Install C/C++, CMake, and Ninja?" Y; then
+		# g++
+		sudo apt install -y g++
 
-				# CMake
-				sudo apt install -y cmake
+		# CMake
+		sudo apt install -y cmake
 
-				# Ninja
-				sudo apt install -y ninja-build
+		# Ninja
+		sudo apt install -y ninja-build
 
-				# Clangd for Neovim
-				sudo apt install -y clangd-15
-				sudo update-alternatives --install $BIN_DIR/clangd clangd $BIN_DIR/clangd-15 100
+		# Clangd for Neovim
+		sudo apt install -y clangd-15
+		sudo update-alternatives --install $BIN_DIR/clangd clangd $BIN_DIR/clangd-15 100
 
-				install_c_cpp
-
-				break;;
-			No ) break;;
-		esac
-	done
+		install_c_cpp
+	fi
 else
 	install_c_cpp
 fi
@@ -107,25 +125,17 @@ fi
 
 
 # Java
-function install_java()
+install_java()
 {
 	COC_EXTENSIONS+=" coc-java"
 }
 if ! which java > /dev/null || ! which javac > /dev/null; then
-	echo "Install Java?"
-	select yn in "Yes" "No";
-	do
-		case $yn in
-			Yes )
-				# OpenJDK
-				sudo apt install -y openjdk-19-jdk-headless
+	if ask "Install Java?" Y; then
+		# OpenJDK
+		sudo apt install -y openjdk-19-jdk-headless
 
-				install_java
-
-				break;;
-			No ) break;;
-		esac
-	done
+		install_java
+	fi
 else
 	install_java
 fi
@@ -133,41 +143,24 @@ fi
 
 
 # HTML CSS JS
-echo "Install HTML, CSS, and JS?"
-select yn in "Yes" "No";
-do
-	case $yn in
-		Yes )
-			COC_EXTENSIONS+=" coc-html coc-css coc-tsserver coc-emmet"
-
-			break;;
-		No ) break;;
-	esac
-done
-
+if ask "Install HTML, CSS, and JS?" Y; then
+	COC_EXTENSIONS+=" coc-html coc-css coc-tsserver coc-emmet"
+fi
 
 
 # Python
-function install_python()
+install_python()
 {
 	COC_EXTENSIONS+=" coc-pyright"
 }
 if ! which python > /dev/null; then
-	echo "Install Python?"
-	select yn in "Yes" "No";
-	do
-		case $yn in
-			Yes )
-				# Python
-				sudo apt install -y python3
-				sudo ln -s /bin/python3 /bin/python
+	if ask "Install Python?" Y; then
+		# Python
+		sudo apt install -y python3
+		sudo ln -s /bin/python3 /bin/python
 
-				install_python
-
-				break;;
-			No ) break;;
-		esac
-	done
+		install_python
+	fi
 else
 	install_python
 fi
