@@ -118,6 +118,9 @@ if ! which g++ > /dev/null || ! which cmake > /dev/null || ! which ninja > /dev/
 		sudo apt install -y clangd-15
 		sudo update-alternatives --install $BIN_DIR/clangd clangd $BIN_DIR/clangd-15 100
 
+		# Set the CMake generator to Ninja in environment variables of .bashrc
+		echo -e '\nexport CMAKE_GENERATOR="Ninja"' | sudo tee -a $HOME/.bashrc > /dev/null
+
 		install_c_cpp
 	fi
 else
