@@ -209,9 +209,13 @@ FONT_FACE="${FONT_NAME}NL Nerd Font Mono"
 FONT_VER="v2.3.3"
 
 # If we are running in WSL
-if [[ $(grep -i Microsoft /proc/version) ]]; then
-	# systemd
-	echo -e "[boot]\nsystemd=true\n" | sudo tee -a /etc/wsl.conf > /dev/null
+if [[ $(grep -Fi "Microsoft" /proc/version) ]]; then
+	# systemd, check if /etc/wsl.conf has the required data for systemd
+	WSL_CONF_PATH=/etc/wsl.conf
+	WSL_CONF_DATA=$'[boot]\nsystemd=true'
+	if ! test -f $WSL_CONF_PATH || [[ $(< $WSL_CONF_PATH) != "$WSL_CONF_DATA" ]]; then
+		echo "$WSL_CONF_DATA" | sudo tee $WSL_CONF_PATH > /dev/null
+	fi
 
 	# TODO: Either show them where to download and install, then
 	# set their terminal settings font to JetBrainsMonoNL Nerd Font Mono
