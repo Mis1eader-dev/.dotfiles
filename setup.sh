@@ -53,30 +53,114 @@ else
 	install_tmux_theme
 fi
 
+# The directory for installing binary executables
+BIN_DIR=/usr/bin
+
 # Neovim
-NEOVIM_BIN_DIR=/usr/bin
-NEOVIM_PATH=$NEOVIM_BIN_DIR/nvim
+NEOVIM_PATH=$BIN_DIR/nvim
 if ! test -f $NEOVIM_PATH; then
-	sudo wget -P $NEOVIM_BIN_DIR https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-	sudo chmod +x $NEOVIM_BIN_DIR/nvim.appimage
-	sudo mv $NEOVIM_BIN_DIR/nvim.appimage $NEOVIM_PATH
+	sudo wget -P $BIN_DIR https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+	sudo chmod +x $BIN_DIR/nvim.appimage
+	sudo mv $BIN_DIR/nvim.appimage $NEOVIM_PATH
 fi
 
 
-# g++
-sudo apt install -y g++
 
-# CMake
-sudo apt install -y cmake
+# Languages and Coc Extensions
+COC_DEFAULT_EXTENSIONS="coc-json coc-yaml coc-pairs"
+COC_EXTENSIONS=""
 
-# Ninja
-sudo apt install -y ninja-build
+# C/C++ and build tools
+if ! which g++ > /dev/null || ! which cmake > /dev/null || ! which ninja > /dev/null; then
+	echo "Install C/C++, CMake, and Ninja?"
+	select yn in "Yes" "No";
+	do
+		case $yn in
+			Yes )
+				# g++
+				sudo apt install -y g++
+
+				# CMake
+				sudo apt install -y cmake
+
+				# Ninja
+				sudo apt install -y ninja-build
+
+				# Clangd for Neovim
+				sudo apt install -y clangd-15
+				sudo update-alternatives --install $BIN_DIR/clangd clangd $BIN_DIR/clangd-15 100
+
+				COC_EXTENSIONS+=" coc-clangd coc-cmake"
+
+				break;;
+			No ) break;;
+		esac
+	done
+fi
 
 
 
-# Clangd for Neovim
-sudo apt install -y clangd-15
-sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-15 100
+# Java
+if ! which java > /dev/null || ! which javac > /dev/null; then
+	echo "Install Java?"
+	select yn in "Yes" "No";
+	do
+		case $yn in
+			Yes )
+				# OpenJDK
+				sudo apt install -y openjdk-19-jdk-headless
+
+				COC_EXTENSIONS+=" coc-java"
+
+				break;;
+			No ) break;;
+		esac
+	done
+fi
+
+
+
+# HTML CSS JS
+echo "Install HTML, CSS, and JS?"
+select yn in "Yes" "No";
+do
+	case $yn in
+		Yes )
+			COC_EXTENSIONS+=" coc-html coc-css coc-tsserver coc-emmet"
+
+			break;;
+		No ) break;;
+	esac
+done
+
+
+
+# Python
+if ! which python > /dev/null; then
+	echo "Install Python?"
+	select yn in "Yes" "No";
+	do
+		case $yn in
+			Yes )
+				# Python
+				sudo apt install -y python
+
+				COC_EXTENSIONS+=" coc-pyright"
+
+				break;;
+			No ) break;;
+		esac
+	done
+fi
+
+
+
+# If at least one programming language is selected
+if ! -z $COC_EXTENSIONS; then
+	COC_DEFAULT_EXTENSIONS+=" coc-snippets"
+fi
+
+
 
 # Node.js for Coc
 if ! which node > /dev/null; then
@@ -90,13 +174,14 @@ nvim --headless +"autocmd User PackerComplete qa"
 nvim --headless +"autocmd User PackerComplete qa" +"silent PackerSync"
 
 # Neovim Coc Extensions
-sudo apt install -y jq
-NEOVIM_COC_EXTENSIONS=$(jq '.dependencies | keys' ~/.config/coc/extensions/package.json | 
-	sed 's/\[*\]*\s*"*//g' |
-	tr -d '\n' |
-	tr ',' ' ')
+#sudo apt install -y jq sed
+#COC_EXTENSIONS=$(jq '.dependencies | keys' ~/.config/coc/extensions/package.json | 
+#	sed 's/\[*\]*\s*"*//g' |
+#	tr -d '\n' |
+#	tr ',' ' ')
 echo "Installing Neovim Coc extensions"
-nvim --headless +"CocInstall -sync $NEOVIM_COC_EXTENSIONS|qa"
+nvim --headless +"CocInstall -sync $COC_DEFAULT_EXTENSIONS$COC_EXTENSIONS|qa"
+#nvim --headless +"CocInstall -sync $COC_EXTENSIONS|qa"
 
 # Don't show untracked files
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME config status.showUntrackedFiles no
