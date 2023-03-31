@@ -53,7 +53,7 @@ sudo apt install -y libssl-dev
 sudo apt install -y curl
 
 # wget
-sudo apt install -y wget
+#sudo apt install -y wget
 
 # git
 sudo apt install -y git
@@ -88,9 +88,8 @@ BIN_DIR=/usr/bin
 # Neovim
 NEOVIM_PATH=$BIN_DIR/nvim
 if ! test -f $NEOVIM_PATH; then
-	sudo wget -P $BIN_DIR https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-	sudo chmod +x $BIN_DIR/nvim.appimage
-	sudo mv $BIN_DIR/nvim.appimage $NEOVIM_PATH
+	sudo curl -L https://github.com/neovim/neovim/releases/latest/download/nvim.appimage --create-dirs -o $NEOVIM_PATH
+	sudo chmod +x $NEOVIM_PATH
 fi
 
 
@@ -192,8 +191,64 @@ nvim --headless +"autocmd User PackerComplete qa" +"silent PackerSync"
 echo "Installing Neovim Coc extensions"
 nvim --headless +"CocInstall -sync $COC_DEFAULT_EXTENSIONS$COC_EXTENSIONS|qa"
 
+
+
 # Don't show untracked files
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME config status.showUntrackedFiles no
 
+
+
+# Platform specific commands to execute
+sudo apt install -y grep
+FONT_NAME="JetBrainsMono"
+FONT_FACE="${FONT_NAME}NL Nerd Font Mono"
+FONT_VER="v2.3.3"
+
+# If we are running in WSL
+if [[ $(grep -i Microsoft /proc/version) ]]; then
+	# systemd
+	echo -e "[boot]\nsystemd=true" > /etc/wsl.conf
+
+	# TODO: Either show them where to download and install, then
+	# set their terminal settings font to JetBrainsMonoNL Nerd Font Mono
+	# Or interact with windows through here
+	
+	echo -e "\nChange the font of the terminal by going to: Terminal > Settings (CTRL + ,) > Profile > Additional settings > Appearance"
+	echo "- Font: $FONT_FACE"
+	echo "- Font Size: 12"
+	echo "- Font Weight: Medium"
+
+# If it is pure linux
+else
+	# JetBrainsMono font
+	FONTS_DIR=$HOME/.local/share/fonts
+	FONT_PATH=$FONTS_DIR/$FONT_NAME
+	
+	# Allow fonts to be installed with `fc-cache -fv`
+	sudo apt install -y fontconfig
+
+	# If the font already exists
+	if ! fc-list : family | sort | uniq | grep -q "$FONT_FACE" && ! test -d $FONT_PATH; then
+		FONT_ZIP_FILE=$FONT_PATH.zip
+		curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/$FONT_VER/$FONT_NAME.zip --create-dirs -o $FONT_ZIP_FILE
+
+		# unzip
+		sudo apt install -y unzip
+		unzip $FONT_ZIP_FILE -d $FONT_PATH
+		rm $FONT_ZIP_FILE
+
+		# Add the font
+		fc-cache -fv
+	fi
+
+	echo -e "\nChange the font of the terminal by going to: Terminal > Preferences > Profile > Text > Custom font"
+	echo "- Font: $FONT_FACE"
+	echo "- Font Size: 12"
+	echo "- Font Weight: Medium"
+fi
+
+
+
+# Finish
 echo -e "\nSetup complete"
 echo -e "Make sure to source the bashrc twice: source ~/.bashrc\n"
