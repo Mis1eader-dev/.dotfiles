@@ -1,6 +1,4 @@
-local hasModule, module = pcall(require, 'coc')
-
-if not hasModule then
+if not packer_plugins or not packer_plugins['coc.nvim'] or not packer_plugins['coc.nvim'].loaded then
 	return
 end
 
