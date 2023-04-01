@@ -3,7 +3,7 @@ vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
 vim.wo.number = true -- Show line numbers
 vim.opt.list = true
-vim.opt.listchars = { trail = '·', tab = '| ', leadmultispace = '|···', precedes = '<', extends = '>' }
+vim.opt.listchars = { trail = '·', tab = '│ ', leadmultispace = '│···', precedes = '<', extends = '>' }
 vim.opt.cursorline = true
 vim.wo.fillchars='eob: '
 vim.opt.wrap = false
