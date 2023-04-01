@@ -9,7 +9,7 @@ alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 dotfiles config core.sparsecheckout true
 
 # Don't clone README.md
-echo -e "/*\n!README.md" > $HOME/.dotfiles/info/sparse-checkout
+echo $'/*\n!README.md' > $HOME/.dotfiles/info/sparse-checkout
 
 # Bring out the files
 dotfiles checkout -f
