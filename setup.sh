@@ -169,10 +169,6 @@ install_python()
 }
 if ! which python > /dev/null; then
 	if ask $'\nInstall Python?' Y; then
-		# Python
-		sudo apt install -y python3
-		sudo ln -s /bin/python3 /bin/python
-
 		install_python
 	fi
 else
@@ -207,6 +203,14 @@ if ! which node > /dev/null; then
 	curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
 	sudo apt install -y nodejs
 fi
+
+# Ensure python is installed
+sudo apt install -y python3
+sudo ln -s /bin/python3 /bin/python
+# Ensure pip is installed
+sudo apt install -y python3-pip
+# Install pynvim for coc-snippets
+python -m pip install --user --upgrade pynvim
 
 # Neovim Packer and Plugins
 echo "Installing Neovim plugins"
