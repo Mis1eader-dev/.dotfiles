@@ -194,19 +194,34 @@ echo
 nvim --headless +"autocmd User PackerComplete qa" +"silent PackerSync"
 
 # Neovim Coc Extensions
-echo -e "\nInstalling Neovim Coc extensions: $COC_EXTENSIONS"
+echo $'\nInstalling Neovim Coc extensions: $COC_EXTENSIONS'
 nvim --headless +"CocInstall -sync $COC_EXTENSIONS|qa"
 
 
 
 # Neovimm Treesitters
-echo -e "\nInstalling Neovim Treesitters: $TREESITTERS"
+echo $'\nInstalling Neovim Treesitters: $TREESITTERS'
 nvim +"TSInstallSync $TREESITTERS|qa"
 
 
 
-# Don't show untracked files
+# Don't show untracked files and allow credentials to be stored
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME config status.showUntrackedFiles no
+
+# Git credentials
+if ask "Do you want to provide your git commit name and email?"; then
+	while read -p $'\tName: ' GIT_USERNAME && [[ -z $GIT_USERNAME ]]; do :
+	done
+
+	while read -p $'\tEmail: ' GIT_EMAIL && [[ -z $GIT_EMAIL ]]; do :
+	done
+
+	git config --global user.name "$GIT_USERNAME"
+	git config --global user.email "$GIT_EMAIL"
+fi
+if ask "Allow git credentials to be stored on disk?"; then
+	git config --global credential.helper store
+fi
 
 
 
