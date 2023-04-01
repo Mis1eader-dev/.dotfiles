@@ -1,7 +1,7 @@
 <h1 align="center">Installation</h1>
 
 ```sh
-# Extract path
+# Git path
 DOTFILES=$HOME/.dotfiles
 
 # Clone the repository
