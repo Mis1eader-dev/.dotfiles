@@ -181,6 +181,27 @@ fi
 
 
 
+# Lua extensions
+install_lua()
+{
+	COC_EXTENSIONS+=" coc-sumneko-lua"
+	TREESITTERS+=" lua"
+}
+if ! which lua-language-server > /dev/null or ! which $HOME/.config/coc/extensions/coc-lua-data/lua-language-server/bin/lua-language-server > /dev/null; then
+	if ask $'\nInstall Lua extensions?' Y; then
+		install_lua
+	fi
+
+	# Lua
+	if ask $'\nInstall Lua (The language, independent from extensions)?' Y; then
+		sudo apt install lua5.4
+	fi
+else
+	install_lua
+fi
+
+
+
 # Node.js for Coc
 if ! which node > /dev/null; then
 	curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
