@@ -20,13 +20,7 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
-  use {
-	  'kdheepak/tabline.nvim',
-	  requires = {
-		  { 'nvim-lualine/lualine.nvim', opt = true },
-		  { 'nvim-tree/nvim-web-devicons', opt = true },
-	  }
-  }
+  use 'nvim-tree/nvim-web-devicons'
   use 'vim-utils/vim-man'
 
   -- Automatically set up your configuration after cloning packer.nvim
