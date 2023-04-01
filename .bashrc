@@ -1,12 +1,15 @@
 # Set default editor to neovim
 export EDITOR="nvim"
 
-# Launch Neovim with 'v'
-alias v=nvim
-
 # This is to allow explorer to be launched from here
 export BROWSER="/mnt/c/windows/explorer.exe"
 alias see=$BROWSER
+
+# Set Ninja as the CMake generator
+export CMAKE_GENERATOR="Ninja"
+
+# Launch Neovim with 'v'
+alias v=nvim
 
 # To not make accidental operations on home directory, we have a bare repo
 alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
