@@ -107,7 +107,7 @@ install_c_cpp()
 
 	# Set the CMake generator to Ninja, in environment variables of .bashrc
 	if [[ -z "$CMAKE_GENERATOR" ]]; then
-		echo -e '\nexport CMAKE_GENERATOR="Ninja"' | sudo tee -a $HOME/.bashrc > /dev/null
+		echo $'\nexport CMAKE_GENERATOR="Ninja"' >> $HOME/.bashrc
 	fi
 }
 if ! which g++ > /dev/null || ! which cmake > /dev/null || ! which ninja > /dev/null || ! which clangd > /dev/null; then
