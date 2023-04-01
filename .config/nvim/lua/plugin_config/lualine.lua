@@ -87,6 +87,14 @@ module.setup {
 				disabled_buftypes = { 'quickfix', 'prompt' }, -- Hide a window if its buffer's type is disabled
 																-- Automatically updates active window color to match color of other components (will be overidden if buffers_color is set)
 				use_mode_colors = true,
+
+				fmt = function(name, _)
+					if name == "[No Name]" then
+						name = "Untitled"
+					end
+
+					return name
+				end
 			},
 		},
 		lualine_z = {
@@ -151,6 +159,10 @@ module.setup {
 					end
 					if dev then
 						icon = dev .. ' '
+					end
+
+					if name == "[No Name]" then
+						name = "Untitled"
 					end
 
 					return icon .. name .. (
