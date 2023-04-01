@@ -13,5 +13,6 @@
 	"pairs.disableLanguages": [
 		"html"
 	],
-	"coc.preferences.enableLinkedEditing": true
+	"coc.preferences.enableLinkedEditing": true,
+	"inlayHint.enable": false
 }
