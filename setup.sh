@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Prompt for Yes/No (Ref: https://gist.github.com/karancode/f43bc93f9e47f53e71fa29eed638243c)
 ask() {
     local prompt default reply
