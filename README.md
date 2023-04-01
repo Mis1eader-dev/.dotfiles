@@ -1,3 +1,5 @@
+<h1 align="center">Installation</h1>
+
 ```sh
 # Clone the repository
 git clone --mirror https://github.com/Mis1eader-dev/.dotfiles.git $HOME/.dotfiles
