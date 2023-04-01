@@ -265,4 +265,6 @@ fi
 
 # Finish
 echo -e "\nSetup complete"
-echo -e "Make sure to source the bashrc twice: source ~/.bashrc\n"
+echo -e "Make sure to source the bashrc: source ~/.bashrc"
+read -p "Press enter to finish"
+echo
