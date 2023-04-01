@@ -16,7 +16,7 @@ dotfiles config core.sparsecheckout true
 # Don't clone README.md
 echo $'/*\n!README.md' > $DOTFILES/info/sparse-checkout
 
-# Bring out the files
+# Bring in the files
 dotfiles checkout -f
 
 # We are done with it
