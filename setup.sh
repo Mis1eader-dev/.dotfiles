@@ -244,7 +244,7 @@ if [[ $(grep -Fi "Microsoft" /proc/version) ]]; then
 	# set their terminal settings font to JetBrainsMonoNL Nerd Font Mono
 	# Or interact with windows through here
 	
-	echo -e "\nChange the font of the terminal by going to: Terminal > Settings (CTRL + ,) > Profile > Additional settings > Appearance"
+	echo $'\nChange the font of the terminal by going to: Terminal > Settings (CTRL + ,) > Profile > Additional settings > Appearance'
 	echo "- Font: $FONT_FACE"
 	echo "- Font Size: 12"
 	echo "- Font Weight: Medium"
@@ -272,7 +272,7 @@ else
 		fc-cache -fv
 	fi
 
-	echo -e "\nChange the font of the terminal by going to: Terminal > Preferences > Profile > Text > Custom font"
+	echo $'\nChange the font of the terminal by going to: Terminal > Preferences > Profile > Text > Custom font'
 	echo "- Font: $FONT_FACE"
 	echo "- Font Size: 12"
 	echo "- Font Weight: Medium"
@@ -281,7 +281,7 @@ fi
 
 
 # Finish
-echo -e "\nSetup complete"
-echo -e "Make sure to source the bashrc: source ~/.bashrc"
+echo $'\nSetup complete'
+echo $'Make sure to source the bashrc: source ~/.bashrc'
 read -p "Press enter to finish"
 echo
