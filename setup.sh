@@ -108,12 +108,12 @@ install_c_cpp()
 	TREESITTERS+=" c cpp cmake"
 
 	# Set the CMake generator to Ninja, in environment variables of .bashrc
-	if [[ -z "$CMAKE_GENERATOR" ]]; then
+	if [[ -z $CMAKE_GENERATOR ]]; then
 		echo $'\nexport CMAKE_GENERATOR="Ninja"' >> $HOME/.bashrc
 	fi
 }
 if ! which g++ > /dev/null || ! which cmake > /dev/null || ! which ninja > /dev/null || ! which clangd > /dev/null; then
-	if ask "Install C/C++, CMake, and Ninja?" Y; then
+	if ask $'\nInstall C/C++, CMake, and Ninja?' Y; then
 		# g++
 		sudo apt install -y g++
 
@@ -142,7 +142,7 @@ install_java()
 	TREESITTERS+=" java"
 }
 if ! which java > /dev/null || ! which javac > /dev/null; then
-	if ask "Install Java?" Y; then
+	if ask $'\nInstall Java?' Y; then
 		# OpenJDK
 		sudo apt install -y openjdk-19-jdk-headless
 
@@ -168,7 +168,7 @@ install_python()
 	TREESITTERS+=" python"
 }
 if ! which python > /dev/null; then
-	if ask "Install Python?" Y; then
+	if ask $'\nInstall Python?' Y; then
 		# Python
 		sudo apt install -y python3
 		sudo ln -s /bin/python3 /bin/python
