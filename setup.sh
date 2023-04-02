@@ -288,7 +288,7 @@ if [[ $(grep -Fi "Microsoft" /proc/version) ]]; then
 # If it is pure linux
 else
 	# JetBrainsMono font
-	FONTS_DIR=$HOME/.local/share/fonts
+	FONTS_DIR=/usr/local/share/fonts
 	FONT_PATH=$FONTS_DIR/$FONT_NAME
 	
 	# Allow fonts to be installed with `fc-cache -fv`
