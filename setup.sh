@@ -250,6 +250,17 @@ fi
 
 
 
+# Auto-completion for bash aliases
+sudo apt install -y bash-completion
+BASH_COMPLETION_PATH=$HOME/.bash_completion
+COMPLETE_ALIAS_PATH="~/.config/complete_alias"
+BASH_COMPLETION_DATA=". $COMPLETE_ALIAS_PATH > /dev/null 2>&1"
+if ! test -f $BASH_COMPLETION_PATH || ! grep -q "^$BASH_COMPLETION_DATA\$" $BASH_COMPLETION_PATH; then
+	echo "$BASH_COMPLETION_DATA" >> $BASH_COMPLETION_PATH
+fi
+
+
+
 # Platform specific commands to execute
 sudo apt install -y grep
 FONT_NAME="JetBrainsMono"
