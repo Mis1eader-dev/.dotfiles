@@ -20,12 +20,8 @@ echo $'/*\n!README.md' > $DOTFILES/info/sparse-checkout
 dotfiles checkout -f
 
 # We are done with it
-unalias dotfiles
 unset DOTFILES
 
-# Execute the setup
-~/setup.sh
-
-# Source .bashrc
-source ~/.bashrc
+# Source and execute the setup
+. ~/setup.sh
 ```
