@@ -318,6 +318,7 @@ fi
 
 # Finish
 echo $'\nSetup complete'
-echo $'Make sure to source the bashrc: source ~/.bashrc'
+#echo $'Make sure to source the bashrc: source ~/.bashrc'
 read -p "Press enter to finish"
 echo
+. $HOME/.bashrc
