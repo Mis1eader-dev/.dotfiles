@@ -316,6 +316,16 @@ fi
 
 
 
+# Add our custom .bashrc on top of the existing .bashrc, by sourcing
+BASHRC_PATH="~/.config/bashrc"
+BASHRC_DATA=". $BASHRC_PATH"
+BASHRC_DEFAULT_PATH=$HOME/.bashrc
+if test -f $BASHRC_DEFAULT_PATH && ! grep -q "^$BASHRC_DATA\$" $BASHRC_DEFAULT_PATH; then
+	echo "$BASHRC_DATA" >> $BASHRC_DEFAULT_PATH
+fi
+
+
+
 # Finish
 echo $'\nSetup complete'
 read -p "Press enter to finish"
