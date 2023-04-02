@@ -155,7 +155,7 @@ fi
 
 
 # HTML CSS JS
-if ask "Install HTML, CSS, and JS?" Y; then
+if ask $'\nInstall HTML, CSS, and JS?' Y; then
 	COC_EXTENSIONS+=" coc-html coc-css coc-tsserver coc-emmet"
 	TREESITTERS+=" html css javascript typescript"
 fi
