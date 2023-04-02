@@ -219,13 +219,13 @@ echo
 nvim --headless +"autocmd User PackerComplete qa" +"silent PackerSync"
 
 # Neovim Coc Extensions
-echo $'\nInstalling Neovim Coc extensions: $COC_EXTENSIONS'
+echo -e "\nInstalling Neovim Coc extensions: $COC_EXTENSIONS"
 nvim --headless +"CocInstall -sync $COC_EXTENSIONS|qa"
 
 
 
 # Neovimm Treesitters
-echo $'\nInstalling Neovim Treesitters: $TREESITTERS'
+echo -e "\nInstalling Neovim Treesitters: $TREESITTERS"
 nvim +"TSInstallSync $TREESITTERS|qa"
 
 
