@@ -55,7 +55,7 @@ unset DOTFILES
   - `g++`
   - `cmake`
   - `ninja-build`
-    - Sets `CMAKE_GENERATOR` environment variable to Ninja, all CMake projects will be built with Ninja.
+    - Sets `CMAKE_GENERATOR` environment variable to Ninja, all CMake projects will be built with Ninja
   - `clangd-15`
   - Coc extensions:
     - `coc-clangd`
@@ -82,7 +82,7 @@ unset DOTFILES
     - `javascript`
     - `typescript`
 - Python (Optional)
-  - Regardless of whether Python is chosen to be installed, Python and pip will be installed later.
+  - Regardless of whether Python is chosen to be installed, Python and pip will be installed later
   - Coc extensions:
     - `coc-pyright`
   - Treesitters:
@@ -105,3 +105,26 @@ unset DOTFILES
   - On a non-Windows machine it also installs:
     - `fontconfig`
     - `unzip` (If the font isn't already installed)
+
+<br>
+
+# Bash aliases
+Set according to `.config/.bashrc`, by default:
+- `v` - Launchs neovim
+- `dotfiles` - Acts on this repository, using git
+- `see` - Opens file explorer on Windows, or opens the browser if an HTML file is given to it
+
+<br>
+
+# neovim
+All key bindings are defaults, and two are added:
+- `CTRL+w |` - Split horizontally
+- `CTRL+w -` - Split vertically
+
+# tmux
+All key bindings are defaults, except for splits, they are rebound to:
+- `CTRL+b |` - Split horizontally
+- `CTRL+b -` - Split vertically
+
+# WSL
+On Windows Subsystem for Linux it enables `systemd`, takes effect after a reboot
