@@ -188,6 +188,7 @@ if ! which lua-language-server > /dev/null or ! which $HOME/.config/coc/extensio
 	# Lua
 	if ask $'\nInstall Lua (The language, independent from extensions)?' Y; then
 		sudo apt install lua5.4
+		install_lua
 	fi
 else
 	install_lua
