@@ -26,7 +26,9 @@ unset DOTFILES
 . ~/setup.sh
 ```
 
-Installs:
+<br>
+
+# What will be installed
 - `libssl-dev`
 - `curl`
 - `git`
@@ -53,6 +55,7 @@ Installs:
   - `g++`
   - `cmake`
   - `ninja-build`
+    - Sets `CMAKE_GENERATOR` environment variable to Ninja, all CMake projects will be built with Ninja.
   - `clangd-15`
   - Coc extensions:
     - `coc-clangd`
@@ -79,8 +82,7 @@ Installs:
     - `javascript`
     - `typescript`
 - Python (Optional)
-  - `python3`
-  - `python3-pip`
+  - Regardless of whether Python is chosen to be installed, Python and pip will be installed later.
   - Coc extensions:
     - `coc-pyright`
   - Treesitters:
@@ -92,6 +94,8 @@ Installs:
   - Treesitters:
     - `lua`
 - `nodejs` - Needed for `coc.nvim`
+- `python3`
+- `python3-pip`
 - `pynvim` - Needed for `coc-snippets`
 - `bash-completion` - Auto-completion for bash commands
 - `cykerway/complete-alias`
@@ -100,4 +104,4 @@ Installs:
 - [JetBrainsMono v2.3.3](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/JetBrainsMono.zip) Font
   - On a non-Windows machine it also installs:
     - `fontconfig`
-    - `unzip` (If the font doesn't already exist)
+    - `unzip` (If the font isn't already installed)
