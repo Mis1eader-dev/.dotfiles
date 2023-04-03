@@ -295,7 +295,7 @@ else
 	# If the font already exists
 	if ! fc-list : family | sort | uniq | grep -q "$FONT_FACE" && ! test -d $FONT_PATH; then
 		FONT_ZIP_FILE=$FONT_PATH.zip
-		curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/$FONT_VER/$FONT_NAME.zip --create-dirs -o $FONT_ZIP_FILE
+		curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/$FONT_VER/${FONT_NAME}.zip --create-dirs -o $FONT_ZIP_FILE
 
 		# unzip
 		sudo apt install -y unzip
