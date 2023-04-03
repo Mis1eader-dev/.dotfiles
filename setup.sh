@@ -336,6 +336,16 @@ fi
 
 
 
+# Add our custom .bash_logout on top of the existing .bash_logout, by sourcing
+BASH_LOGOUT_PATH="~/.config/.bash_logout"
+BASH_LOGOUT_DATA=". $BASH_LOGOUT_PATH"
+BASH_LOGOUT_DEFAULT_PATH=$HOME/.bash_logout
+if ! test -f $BASH_LOGOUT_DEFAULT_PATH || ! grep -q "^$BASH_LOGOUT_DATA\$" $BASH_LOGOUT_DEFAULT_PATH; then
+	echo "$BASH_LOGOUT_DATA" >> $BASH_LOGOUT_DEFAULT_PATH
+fi
+
+
+
 # Finish
 echo $'\nSetup complete'
 read -p "Press enter to finish"
