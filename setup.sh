@@ -153,6 +153,7 @@ fi
 
 # HTML CSS JS
 if ask $'\nInstall HTML, CSS, and JS?' Y; then
+	HTML_CSS_JS_INSTALL=true
 	COC_EXTENSIONS+=" coc-html coc-css coc-tsserver coc-emmet"
 	TREESITTERS+=" html css javascript typescript"
 fi
@@ -200,6 +201,11 @@ fi
 if ! which node > /dev/null; then
 	curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
 	sudo apt install -y nodejs
+fi
+
+# Live server
+if ! test -z ${HTML_CSS_JS_INSTALL+x} && ! which live-server > /dev/null; then
+	sudo npm i -g live-server
 fi
 
 # Ensure python is installed
