@@ -117,13 +117,6 @@ Set according to `.config/.bashrc`, by default:
 
 <br>
 
-# Symlinks
-These are made by the `setup.sh`, not accounting for other symlinks made by package installations
-- `clangd` -> `clangd-15`
-- `python` -> `python3`
-
-<br>
-
 # neovim
 All key bindings are defaults, and two are added:
 - `CTRL+w |` - Split horizontally
@@ -133,6 +126,15 @@ All key bindings are defaults, and two are added:
 All key bindings are defaults, except for splits, they are rebound to:
 - `CTRL+b |` - Split horizontally
 - `CTRL+b -` - Split vertically
+
+<br>
+
+# Symlinks
+These are made by the `setup.sh`, not accounting for other symlinks made by package installations
+- `clangd` -> `clangd-15`
+- `python` -> `python3`
+
+<br>
 
 # WSL
 On Windows Subsystem for Linux it enables `systemd`, takes effect after a reboot
