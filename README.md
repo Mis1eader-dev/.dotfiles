@@ -25,3 +25,79 @@ unset DOTFILES
 # Source and execute the setup
 . ~/setup.sh
 ```
+
+Installs:
+- `libssl-dev`
+- `curl`
+- `git`
+- `libfuse2` - For running AppImages
+- `tmux` (Optional)
+  - `jimeh/tmux-themepack`
+- `neovim`
+  - `wbthomason/packer.nvim` - Plugin manager
+  - `Mofiqul/vscode.nvim` - VSCode Dark+ theme
+  - `neoclide/coc.nvim` - Auto completion
+    - `coc-json`
+    - `coc-yaml`
+    - `coc-pairs`
+    - `coc-snippets`
+    - Others depending on whether that language is installed
+  - `nvim-treesitter/nvim-treesitter`
+    - `json`
+    - `yaml`
+  - `nvim-lualine/lualine.nvim` - Status line and tabline
+  - `nvim-tree/nvim-web-devicons`
+  - `vim-utils/vim-man` - Man pages
+  - `folke/todo-comments.nvim`
+- C/C++ (Optional)
+  - `g++`
+  - `cmake`
+  - `ninja-build`
+  - `clangd-15`
+  - Coc extensions:
+    - `coc-clangd`
+    - `coc-cmake`
+  - Treesitters:
+    - `c`
+    - `cpp`
+    - `cmake`
+- Java (Optional)
+  - `openjdk-19-jdk-headless`
+  - Coc extensions:
+    - `coc=java`
+  - Treesitters:
+    - `java`
+- HTML, CSS, JS (Optional)
+  - Coc extensions:
+    - `coc-html`
+    - `coc-css`
+    - `coc-tsserver`
+    - `coc-emmet`
+  - Treesitters:
+    - `html`
+    - `css`
+    - `javascript`
+    - `typescript`
+- Python (Optional)
+  - `python3`
+  - `python3-pip`
+  - Coc extensions:
+    - `coc-pyright`
+  - Treesitters:
+    - `python`
+- Lua (Optional)
+  - `lua5.4` (Optional)
+  - Coc extensions:
+    - `coc-sumneko-lua`
+  - Treesitters:
+    - `lua`
+- `nodejs` - Needed for `coc.nvim`
+- `pynvim` - Needed for `coc-snippets`
+- `bash-completion` - Auto-completion for bash commands
+- `cykerway/complete-alias`
+  - The `.config` folder has this, by default it is set to auto-complete all aliases
+- `grep` - Regular expressions (regex)
+- [JetBrainsMono v2.3.3](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/JetBrainsMono.zip) Font
+  - On a non-Windows machine it also installs:
+    - `fontconfig`
+    - `unzip` (If the font doesn't already exist)
