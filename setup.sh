@@ -316,6 +316,16 @@ fi
 
 
 
+# Add our custom .profile on top of the existing .profile, by sourcing
+PROFILE_PATH="~/.config/profile"
+PROFILE_DATA=". $PROFILE_PATH"
+PROFILE_DEFAULT_PATH=$HOME/.profile
+if ! test -f $PROFILE_DEFAULT_PATH || ! grep -q "^$PROFILE_DATA\$" $PROFILE_DEFAULT_PATH; then
+	echo "$PROFILE_DATA" >> $PROFILE_DEFAULT_PATH
+fi
+
+
+
 # Add our custom .bashrc on top of the existing .bashrc, by sourcing
 BASHRC_PATH="~/.config/bashrc"
 BASHRC_DATA=". $BASHRC_PATH"
