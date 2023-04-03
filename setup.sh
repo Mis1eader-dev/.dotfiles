@@ -330,7 +330,7 @@ fi
 BASHRC_PATH="~/.config/bashrc"
 BASHRC_DATA=". $BASHRC_PATH"
 BASHRC_DEFAULT_PATH=$HOME/.bashrc
-if test -f $BASHRC_DEFAULT_PATH && ! grep -q "^$BASHRC_DATA\$" $BASHRC_DEFAULT_PATH; then
+if ! test -f $BASHRC_DEFAULT_PATH || ! grep -q "^$BASHRC_DATA\$" $BASHRC_DEFAULT_PATH; then
 	echo "$BASHRC_DATA" >> $BASHRC_DEFAULT_PATH
 fi
 
