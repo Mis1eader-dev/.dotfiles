@@ -47,6 +47,7 @@ unset DOTFILES
   - `nvim-treesitter/nvim-treesitter`
     - `json`
     - `yaml`
+    - Others depending on whether that language is installed
   - `nvim-lualine/lualine.nvim` - Status line and tabline
   - `nvim-tree/nvim-web-devicons`
   - `vim-utils/vim-man` - Man pages
