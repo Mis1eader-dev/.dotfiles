@@ -100,7 +100,7 @@ unset DOTFILES
 - `pynvim` - Needed for `coc-snippets`
 - `bash-completion` - Auto-completion for bash commands
 - `cykerway/complete-alias`
-  - The `.config` folder has this, by default it is set to auto-complete all aliases
+  - In `.config/.complete_alias` by default it is set to auto-complete all aliases
 - `grep` - Regular expressions (regex)
 - [JetBrainsMono v2.3.3](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/JetBrainsMono.zip) Font
   - On a non-Windows machine it also installs:
