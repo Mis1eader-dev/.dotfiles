@@ -5,7 +5,7 @@ export EDITOR="nvim"
 export BROWSER="/mnt/c/windows/explorer.exe"
 alias see=$BROWSER
 
-# Launch Neovim with 'v'
+# Launch neovim with 'v'
 alias v=nvim
 
 # To not make accidental operations on home directory, we have a bare repo

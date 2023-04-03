@@ -63,7 +63,7 @@ sudo apt install -y libfuse2
 
 
 
-# Tmux
+# tmux
 install_tmux_theme()
 {
 	# Tmux theme
@@ -73,7 +73,7 @@ install_tmux_theme()
 	fi
 }
 if ! which tmux > /dev/null; then
-	if ask "Install Tmux?" Y; then
+	if ask "Install tmux?" Y; then
 		sudo apt install -y tmux
 		install_tmux_theme
 	fi
@@ -84,7 +84,7 @@ fi
 # The directory for installing binary executables
 BIN_DIR=/usr/bin
 
-# Neovim
+# neovim
 NEOVIM_PATH=$BIN_DIR/nvim
 if ! test -f $NEOVIM_PATH; then
 	sudo curl -L https://github.com/neovim/neovim/releases/latest/download/nvim.appimage --create-dirs -o $NEOVIM_PATH
