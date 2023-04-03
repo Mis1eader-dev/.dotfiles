@@ -54,9 +54,6 @@ sudo apt install -y libssl-dev
 # Curl
 sudo apt install -y curl
 
-# wget
-#sudo apt install -y wget
-
 # git
 sudo apt install -y git
 
