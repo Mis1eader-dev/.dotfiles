@@ -72,6 +72,7 @@ unset DOTFILES
   - Treesitters:
     - `java`
 - HTML, CSS, JS (Optional)
+  - `live-server` - To make documents hot refresh
   - Coc extensions:
     - `coc-html`
     - `coc-css`
