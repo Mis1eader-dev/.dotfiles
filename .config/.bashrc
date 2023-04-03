@@ -5,9 +5,6 @@ export EDITOR="nvim"
 export BROWSER="/mnt/c/windows/explorer.exe"
 alias see=$BROWSER
 
-# Set Ninja as the CMake generator
-export CMAKE_GENERATOR="Ninja"
-
 # Launch Neovim with 'v'
 alias v=nvim
 
