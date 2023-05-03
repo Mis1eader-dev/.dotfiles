@@ -68,7 +68,7 @@ unset DOTFILES
 - Java (Optional)
   - `openjdk-19-jdk-headless`
   - Coc extensions:
-    - `coc=java`
+    - `coc-java`
   - Treesitters:
     - `java`
 - HTML, CSS, JS (Optional)
