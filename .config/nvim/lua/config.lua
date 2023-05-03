@@ -9,7 +9,7 @@ opt.list = true
 opt.listchars = { trail = '·', tab = '│ ', leadmultispace = '│···', precedes = '<', extends = '>' }
 opt.cursorline = true
 wo.fillchars='eob: '
-opt.wrap = false
+opt.wrap = true
 opt.sidescroll = 1
 --opt.sidescrolloff = 5
 --opt.laststatus = 0 -- To disable status line
