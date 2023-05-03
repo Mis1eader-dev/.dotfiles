@@ -127,6 +127,7 @@ All key bindings are defaults, and two are added:
 All key bindings are defaults, except for splits, they are rebound to:
 - `CTRL+b |` - Split horizontally
 - `CTRL+b -` - Split vertically
+- `CTRL+b b` - Show/hide status line
 
 <br>
 
