@@ -57,6 +57,7 @@ unset DOTFILES
   - `cmake`
   - `ninja-build`
     - Sets `CMAKE_GENERATOR` environment variable to Ninja, all CMake projects will be built with Ninja
+    - Sets `CMAKE_EXPORT_COMPILE_COMMANDS` to 1, all CMake projects will create `compile_commands.json` automatically
   - `clangd-15`
   - Coc extensions:
     - `coc-clangd`
