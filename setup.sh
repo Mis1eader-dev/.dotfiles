@@ -108,6 +108,11 @@ install_c_cpp()
 	if [[ -z $CMAKE_GENERATOR ]]; then
 		echo $'\nexport CMAKE_GENERATOR="Ninja"' >> $HOME/.bashrc
 	fi
+
+	# Have CMake generate compile_commands.json, in environment variables of .bashrc
+	if [[ -z $CMAKE_EXPORT_COMPILE_COMMANDS ]]; then
+		echo $'\nexport CMAKE_EXPORT_COMPILE_COMMANDS=1' >> $HOME/.bashrc
+	fi
 }
 if ! which g++ > /dev/null || ! which cmake > /dev/null || ! which ninja > /dev/null || ! which clangd > /dev/null; then
 	if ask $'\nInstall C/C++, CMake, and Ninja?' Y; then
