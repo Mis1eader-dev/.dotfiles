@@ -256,6 +256,9 @@ fi
 if ask "Allow git credentials to be stored on disk?"; then
 	git config --global credential.helper store
 fi
+if ask "Set default git init branch name to main?"; then
+	git config --global init.defaultBranch main
+fi
 
 
 
