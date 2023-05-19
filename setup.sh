@@ -40,7 +40,7 @@ ask() {
 
 
 #Make sure everything is up to date
-if ask "Update everything before we start?" Y ; then
+if ask 'Update everything before we start?' Y ; then
 	sudo apt update -y
 	sudo apt upgrade -y
 	sudo apt autoremove -y
@@ -73,7 +73,7 @@ install_tmux_theme()
 	fi
 }
 if ! which tmux > /dev/null; then
-	if ask "Install tmux?" Y; then
+	if ask 'Install tmux?' Y; then
 		sudo apt install -y tmux
 		install_tmux_theme
 	fi
@@ -94,19 +94,19 @@ fi
 
 
 # Languages and Coc Extensions
-COC_EXTENSIONS="coc-json coc-yaml coc-pairs coc-snippets"
+COC_EXTENSIONS='coc-json coc-yaml coc-pairs coc-snippets'
 # Treesitters
-TREESITTERS="json yaml"
+TREESITTERS='json yaml'
 
 # C/C++ and build tools
 install_c_cpp()
 {
-	COC_EXTENSIONS+=" coc-clangd coc-cmake"
-	TREESITTERS+=" c cpp cmake"
+	COC_EXTENSIONS+=' coc-clangd coc-cmake'
+	TREESITTERS+=' c cpp cmake'
 
 	# Set the CMake generator to Ninja, in environment variables of .bashrc
 	if [[ -z $CMAKE_GENERATOR ]]; then
-		echo $'\nexport CMAKE_GENERATOR="Ninja"' >> $HOME/.bashrc
+		echo $'\nexport CMAKE_GENERATOR=\'Ninja\'' >> $HOME/.bashrc
 	fi
 
 	# Have CMake generate compile_commands.json, in environment variables of .bashrc
@@ -140,8 +140,8 @@ fi
 # Java
 install_java()
 {
-	COC_EXTENSIONS+=" coc-java"
-	TREESITTERS+=" java"
+	COC_EXTENSIONS+=' coc-java'
+	TREESITTERS+=' java'
 }
 if ! which java > /dev/null || ! which javac > /dev/null; then
 	if ask $'\nInstall Java?' Y; then
@@ -159,16 +159,16 @@ fi
 # HTML CSS JS
 if ask $'\nInstall HTML, CSS, and JS?' Y; then
 	HTML_CSS_JS_INSTALL=true
-	COC_EXTENSIONS+=" coc-html coc-css coc-tsserver coc-emmet"
-	TREESITTERS+=" html css javascript typescript"
+	COC_EXTENSIONS+=' coc-html coc-css coc-tsserver coc-emmet'
+	TREESITTERS+=' html css javascript typescript'
 fi
 
 
 # Python
 install_python()
 {
-	COC_EXTENSIONS+=" coc-pyright"
-	TREESITTERS+=" python"
+	COC_EXTENSIONS+=' coc-pyright'
+	TREESITTERS+=' python'
 }
 if ! which python > /dev/null; then
 	if ask $'\nInstall Python?' Y; then
@@ -183,8 +183,8 @@ fi
 # Lua extensions
 install_lua()
 {
-	COC_EXTENSIONS+=" coc-sumneko-lua"
-	TREESITTERS+=" lua"
+	COC_EXTENSIONS+=' coc-sumneko-lua'
+	TREESITTERS+=' lua'
 }
 if ! which lua-language-server > /dev/null or ! which $HOME/.config/coc/extensions/coc-lua-data/lua-language-server/bin/lua-language-server > /dev/null; then
 	if ask $'\nInstall Lua extensions?' Y; then
@@ -222,7 +222,7 @@ sudo apt install -y python3-pip
 python -m pip install --user --upgrade pynvim
 
 # Neovim Packer and Plugins
-echo "Installing Neovim plugins"
+echo 'Installing Neovim plugins'
 nvim --headless +"autocmd User PackerComplete qa"
 echo
 nvim --headless +"autocmd User PackerComplete qa" +"silent PackerSync"
@@ -243,7 +243,7 @@ nvim +"TSInstallSync $TREESITTERS|qa"
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME config status.showUntrackedFiles no
 
 # Git credentials
-if ask "Do you want to provide your git commit name and email?"; then
+if ask 'Do you want to provide your git commit name and email?'; then
 	while read -p $'\tName: ' GIT_USERNAME && [[ -z $GIT_USERNAME ]]; do :
 	done
 
@@ -253,10 +253,12 @@ if ask "Do you want to provide your git commit name and email?"; then
 	git config --global user.name "$GIT_USERNAME"
 	git config --global user.email "$GIT_EMAIL"
 fi
-if ask "Allow git credentials to be stored on disk?"; then
+if ask 'Allow git credentials to be stored on disk?'; then
 	git config --global credential.helper store
 fi
-if ask "Set default git init branch name to main?"; then
+
+# Git default branch
+if ask 'Set default git init branch name to main?'; then
 	git config --global init.defaultBranch main
 fi
 
@@ -265,7 +267,7 @@ fi
 # Auto-completion for bash aliases
 sudo apt install -y bash-completion
 BASH_COMPLETION_PATH=$HOME/.bash_completion
-COMPLETE_ALIAS_PATH="~/.config/.complete_alias"
+COMPLETE_ALIAS_PATH=~/.config/.complete_alias
 BASH_COMPLETION_DATA=". $COMPLETE_ALIAS_PATH > /dev/null 2>&1"
 if ! test -f $BASH_COMPLETION_PATH || ! grep -q "^$BASH_COMPLETION_DATA\$" $BASH_COMPLETION_PATH; then
 	echo "$BASH_COMPLETION_DATA" >> $BASH_COMPLETION_PATH
@@ -275,12 +277,12 @@ fi
 
 # Platform specific commands to execute
 sudo apt install -y grep
-FONT_NAME="JetBrainsMono"
+FONT_NAME='JetBrainsMono'
 FONT_FACE="${FONT_NAME}NL Nerd Font Mono"
-FONT_VER="v2.3.3"
+FONT_VER='v2.3.3'
 
 # If we are running in WSL
-if [[ $(grep -Fi "Microsoft" /proc/version) ]]; then
+if [[ $(grep -Fi 'Microsoft' /proc/version) ]]; then
 	# systemd, check if /etc/wsl.conf has the required data for systemd
 	WSL_CONF_PATH=/etc/wsl.conf
 	WSL_CONF_DATA=$'[boot]\nsystemd=true'
@@ -294,8 +296,8 @@ if [[ $(grep -Fi "Microsoft" /proc/version) ]]; then
 	
 	echo $'\nChange the font of the terminal by going to: Terminal > Settings (CTRL + ,) > Profile > Additional settings > Appearance'
 	echo "- Font: $FONT_FACE"
-	echo "- Font Size: 12"
-	echo "- Font Weight: Medium"
+	echo '- Font Size: 12'
+	echo '- Font Weight: Medium'
 
 # If it is pure linux
 else
@@ -322,14 +324,14 @@ else
 
 	echo $'\nChange the font of the terminal by going to: Terminal > Preferences > Profile > Text > Custom font'
 	echo "- Font: $FONT_FACE"
-	echo "- Font Size: 12"
-	echo "- Font Weight: Medium"
+	echo '- Font Size: 12'
+	echo '- Font Weight: Medium'
 fi
 
 
 
 # Add our custom .profile on top of the existing .profile, by sourcing
-PROFILE_PATH="~/.config/.profile"
+PROFILE_PATH=~/.config/.profile
 PROFILE_DATA=". $PROFILE_PATH"
 PROFILE_DEFAULT_PATH=$HOME/.profile
 if ! test -f $PROFILE_DEFAULT_PATH || ! grep -q "^$PROFILE_DATA\$" $PROFILE_DEFAULT_PATH; then
@@ -339,7 +341,7 @@ fi
 
 
 # Add our custom .bashrc on top of the existing .bashrc, by sourcing
-BASHRC_PATH="~/.config/.bashrc"
+BASHRC_PATH=~/.config/.bashrc
 BASHRC_DATA=". $BASHRC_PATH"
 BASHRC_DEFAULT_PATH=$HOME/.bashrc
 if ! test -f $BASHRC_DEFAULT_PATH || ! grep -q "^$BASHRC_DATA\$" $BASHRC_DEFAULT_PATH; then
@@ -349,7 +351,7 @@ fi
 
 
 # Add our custom .bash_logout on top of the existing .bash_logout, by sourcing
-BASH_LOGOUT_PATH="~/.config/.bash_logout"
+BASH_LOGOUT_PATH=~/.config/.bash_logout
 BASH_LOGOUT_DATA=". $BASH_LOGOUT_PATH"
 BASH_LOGOUT_DEFAULT_PATH=$HOME/.bash_logout
 if ! test -f $BASH_LOGOUT_DEFAULT_PATH || ! grep -q "^$BASH_LOGOUT_DATA\$" $BASH_LOGOUT_DEFAULT_PATH; then
@@ -360,6 +362,6 @@ fi
 
 # Finish
 echo $'\nSetup complete'
-read -p "Press enter to finish"
+read -p 'Press enter to finish'
 echo
 . $HOME/.bashrc
