@@ -1,8 +1,8 @@
 # Set default editor to neovim
-export EDITOR="nvim"
+export EDITOR='nvim'
 
 # This is to allow explorer to be launched from here
-export BROWSER="/mnt/c/windows/explorer.exe"
+export BROWSER='/mnt/c/windows/explorer.exe'
 alias see=$BROWSER
 
 # Launch neovim with 'v'
@@ -10,6 +10,18 @@ alias v=nvim
 
 # To not make accidental operations on home directory, we have a bare repo
 alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+
+# Git common command aliases
+alias gi='git init'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gca='gc -a'
+alias gp='git push'
+alias gb='git branch'
+alias gba='gb -a'
+alias gch='git checkout'
+alias gm='git merge'
 
 # Run our user from tmux
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
