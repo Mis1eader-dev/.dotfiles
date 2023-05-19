@@ -116,6 +116,17 @@ Set according to `.config/.bashrc`, by default:
 - `v` - Launchs neovim
 - `dotfiles` - Acts on this repository, using git
 - `see` - Opens file explorer on Windows, or opens the browser if an HTML file is given to it
+- `gi` - `git init`
+- `gs` - `git status`
+- `ga` - `git add`
+- `gc` - `git commit`
+- `gca` - `gc -a`
+- `gp` - `git push`
+- `gpl` - `git pull`
+- `gb` - `git branch`
+- `gba` - `gb -a`
+- `gch` - `git checkout`
+- `gm` - `git merge`
 
 <br>
 
