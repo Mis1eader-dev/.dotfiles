@@ -116,6 +116,7 @@ Set according to `.config/.bashrc`, by default:
 - `v` - Launchs neovim
 - `dotfiles` - Acts on this repository, using git
 - `see` - Opens file explorer on Windows, or opens the browser if an HTML file is given to it
+- `sdown` - Shutdown
 - `gi` - `git init`
 - `gs` - `git status`
 - `ga` - `git add`
