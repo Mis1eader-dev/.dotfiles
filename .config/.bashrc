@@ -24,6 +24,9 @@ alias gba='gb -a'
 alias gch='git checkout'
 alias gm='git merge'
 
+# Alias for shutdown
+alias sdown='sudo shutdown now'
+
 # Run our user from tmux
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
