@@ -122,12 +122,17 @@ Set according to `.config/.bashrc`, by default:
 - `ga` - `git add`
 - `gc` - `git commit`
 - `gca` - `gc -a`
+- `gcm` - `gc -m`
 - `gp` - `git push`
 - `gpl` - `git pull`
 - `gb` - `git branch`
 - `gba` - `gb -a`
+- `gbd` - `gb -d`
 - `gch` - `git checkout`
+- `gchb` - `gch -b`
 - `gm` - `git merge`
+- `grb` - `git rebase`
+- `grem` - `git remote`
 
 <br>
 
