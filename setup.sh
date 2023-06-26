@@ -267,6 +267,11 @@ if ask 'Set default git mergetool to nvimdiff?'; then
 	git config --global merge.tool nvimdiff
 fi
 
+# Git merge backup
+if ask 'Disable git merge backup files?'; then
+	git config --global mergetool.keepBackup false
+fi
+
 
 
 # Auto-completion for bash aliases
