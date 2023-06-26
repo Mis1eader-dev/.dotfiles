@@ -262,6 +262,11 @@ if ask 'Set default git init branch name to main?'; then
 	git config --global init.defaultBranch main
 fi
 
+# Git mergetool
+if ask 'Set default git mergetool to nvimdiff?'; then
+	git config --global merge.tool nvimdiff
+fi
+
 
 
 # Auto-completion for bash aliases
