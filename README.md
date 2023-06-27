@@ -134,6 +134,7 @@ Set according to `.config/.bashrc`, by default:
 - `gm` - `git merge`
 - `grb` - `git rebase`
 - `grem` - `git remote`
+- `gfch` - `git fetch`
 
 <br>
 
