@@ -29,6 +29,7 @@ alias gchb='gch -b'
 alias gm='git merge'
 alias grb='git rebase'
 alias grem='git remote'
+alias gfch='git fetch'
 
 # Alias for shutdown
 alias sdown='sudo shutdown now'
