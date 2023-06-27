@@ -121,15 +121,16 @@ Set according to `.config/.bashrc`, by default:
 - `gs` - `git status`
 - `ga` - `git add`
 - `gc` - `git commit`
-- `gca` - `gc -a`
-- `gcm` - `gc -m`
+- `gca` - `gc -a` - Git commit all, including unstaged
+- `gcm` - `gc -m` - Git commit staged with message
+- `gcam` - `gca -m` - Git commit all, including unstaged, with message
 - `gp` - `git push`
 - `gpl` - `git pull`
 - `gb` - `git branch`
-- `gba` - `gb -a`
-- `gbd` - `gb -d`
+- `gba` - `gb -a` - Git show branches, including remote
+- `gbd` - `gb -d` - Git delete branch
 - `gch` - `git checkout`
-- `gchb` - `gch -b`
+- `gchb` - `gch -b` - Git checkout into new branch
 - `gm` - `git merge`
 - `grb` - `git rebase`
 - `grem` - `git remote`
