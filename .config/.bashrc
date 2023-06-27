@@ -30,6 +30,7 @@ alias gm='git merge'
 alias grb='git rebase'
 alias grem='git remote'
 alias gfch='git fetch'
+alias giff='git diff'
 
 # Alias for shutdown
 alias sdown='sudo shutdown now'
