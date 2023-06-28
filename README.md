@@ -124,6 +124,7 @@ Set according to `.config/.bashrc`, by default:
 - `gca` - `gc -a` - Git commit all, including unstaged
 - `gcm` - `gc -m` - Git commit staged with message
 - `gcam` - `gca -m` - Git commit all, including unstaged, with message
+- `gcma` - `gcam`
 - `gp` - `git push`
 - `gpl` - `git pull`
 - `gb` - `git branch`
@@ -132,6 +133,7 @@ Set according to `.config/.bashrc`, by default:
 - `gch` - `git checkout`
 - `gchb` - `gch -b` - Git checkout into new branch
 - `gm` - `git merge`
+- `gms` - `gm --squash` - Git merge other branch into current branch, squashing all commits into one
 - `grb` - `git rebase`
 - `grem` - `git remote`
 - `gfch` - `git fetch`
