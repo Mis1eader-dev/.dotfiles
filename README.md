@@ -126,10 +126,12 @@ Set according to `.config/.bashrc`, by default:
 - `gcam` - `gca -m` - Git commit all, including unstaged, with message
 - `gcma` - `gcam`
 - `gp` - `git push`
+- `gpod` - `gp origin -d`
 - `gpl` - `git pull`
 - `gb` - `git branch`
 - `gba` - `gb -a` - Git show branches, including remote
 - `gbd` - `gb -d` - Git delete branch
+- `gbD` - `gb -D` - Git delete branch forcefully
 - `gch` - `git checkout`
 - `gchb` - `gch -b` - Git checkout into new branch
 - `gm` - `git merge`
