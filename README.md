@@ -139,6 +139,7 @@ Set according to `.config/.bashrc`, by default:
 - `gbD` - `gb -D` - Git delete branch forcefully
 - `gch` - `git checkout`
 - `gchb` - `gch -b` - Git checkout into new branch
+- `gbch` - `gchb`
 - `gm` - `git merge`
 - `gms` - `gm --squash` - Git merge other branch into current branch, squashing all commits into one
 - `grb` - `git rebase`
