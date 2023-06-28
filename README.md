@@ -126,8 +126,13 @@ Set according to `.config/.bashrc`, by default:
 - `gcam` - `gca -m` - Git commit all, including unstaged, with message
 - `gcma` - `gcam`
 - `gp` - `git push`
-- `gpod` - `gp origin -d`
+- `gpod` - `gp origin -d` - Git delete branch remotely
+- `gpuo` - `gp -u origin` - Git push upstream
+- `gpf` - `gp -f` - Git push forcefully
+- `gpfwl` - `gp --force-with-lease` - Git push forcefully, but ask nicely before doing so
 - `gpl` - `git pull`
+- `grst` - `git reset`
+- `grsth` - `grst --hard`
 - `gb` - `git branch`
 - `gba` - `gb -a` - Git show branches, including remote
 - `gbd` - `gb -d` - Git delete branch
