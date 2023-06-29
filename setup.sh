@@ -171,7 +171,7 @@ install_python()
 	TREESITTERS+=' python'
 }
 if ! which python > /dev/null; then
-	if ask $'\nInstall Python?' Y; then
+	if ask $'\nInstall Python extensions?' Y; then
 		install_python
 	fi
 else
@@ -186,7 +186,7 @@ install_lua()
 	COC_EXTENSIONS+=' coc-sumneko-lua'
 	TREESITTERS+=' lua'
 }
-if ! which lua-language-server > /dev/null or ! which $HOME/.config/coc/extensions/coc-lua-data/lua-language-server/bin/lua-language-server > /dev/null; then
+if ! which lua-language-server > /dev/null || ! which $HOME/.config/coc/extensions/coc-lua-data/lua-language-server/bin/lua-language-server > /dev/null; then
 	if ask $'\nInstall Lua extensions?' Y; then
 		install_lua
 	fi
@@ -239,11 +239,11 @@ nvim +"TSInstallSync $TREESITTERS|qa"
 
 
 
-# Don't show untracked files and allow credentials to be stored
+# Don't show dotfiles untracked files
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME config status.showUntrackedFiles no
 
 # Git credentials
-if ask 'Do you want to provide your git commit name and email?'; then
+if ask 'Do you want to provide your git commit name and email?' Y; then
 	while read -p $'\tName: ' GIT_USERNAME && [[ -z $GIT_USERNAME ]]; do :
 	done
 
@@ -253,22 +253,22 @@ if ask 'Do you want to provide your git commit name and email?'; then
 	git config --global user.name "$GIT_USERNAME"
 	git config --global user.email "$GIT_EMAIL"
 fi
-if ask 'Allow git credentials to be stored on disk?'; then
+if ask 'Allow git credentials to be stored on disk?' Y; then
 	git config --global credential.helper store
 fi
 
 # Git default branch
-if ask 'Set default git init branch name to main?'; then
+if ask 'Set default git init branch name to main?' Y; then
 	git config --global init.defaultBranch main
 fi
 
 # Git mergetool
-if ask 'Set default git mergetool to nvimdiff?'; then
+if ask 'Set default git mergetool to nvimdiff?' Y; then
 	git config --global merge.tool nvimdiff
 fi
 
 # Git merge backup
-if ask 'Disable git merge backup files?'; then
+if ask 'Disable git merge backup files?' Y; then
 	git config --global mergetool.keepBackup false
 fi
 
