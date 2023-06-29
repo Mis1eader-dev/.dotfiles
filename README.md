@@ -146,6 +146,7 @@ Set according to `.config/.bashrc`, by default:
 - `grem` - `git remote`
 - `gfch` - `git fetch`
 - `giff` - `git diff`
+- `glog` - `git log`
 
 <br>
 
