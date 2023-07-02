@@ -12,7 +12,7 @@ alias v=nvim
 alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 # Git common command aliases
-alias gi='git init'
+alias ginit='git init'
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
