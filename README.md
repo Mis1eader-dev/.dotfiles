@@ -120,6 +120,9 @@ Set according to `.config/.bashrc`, by default:
 - `ginit` - `git init`
 - `gs` - `git status`
 - `ga` - `git add`
+- `grm` - `git rm`
+- `grmstaged` - `grm --cached`
+- `grest` - `git restore`
 - `gc` - `git commit`
 - `gca` - `gc -a` - Git commit all, including unstaged
 - `gcm` - `gc -m` - Git commit staged with message
@@ -144,6 +147,8 @@ Set according to `.config/.bashrc`, by default:
 - `gms` - `gm --squash` - Git merge other branch into current branch, squashing all commits into one
 - `grb` - `git rebase`
 - `grem` - `git remote`
+- `grema` - `grem add`
+- `gremao` - `grema origin`
 - `gfch` - `git fetch`
 - `giff` - `git diff`
 - `glog` - `git log`
