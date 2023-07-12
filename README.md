@@ -114,7 +114,8 @@ unset DOTFILES
 # Bash aliases
 Set according to `.config/.bashrc`, by default:
 - `v` - Launchs neovim
-- `dotfiles` - Acts on this repository, using git
+- `vsudo` - Launchs neovim with sudo
+- `dotfiles` - Acts on this repository using git
 - `see` - Opens file explorer on Windows, or opens the browser if an HTML file is given to it
 - `sdown` - Shutdown
 - `ginit` - `git init`
