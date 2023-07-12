@@ -8,6 +8,9 @@ alias see=$BROWSER
 # Launch neovim with 'v'
 alias v=nvim
 
+# Sudo neovim
+alias vsudo=sudoedit
+
 # To not make accidental operations on home directory, we have a bare repo
 alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
