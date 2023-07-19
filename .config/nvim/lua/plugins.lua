@@ -26,6 +26,7 @@ return require('packer').startup(function(use)
 		'folke/todo-comments.nvim',
 		requires = 'nvim-lua/plenary.nvim',
 	}
+	use 'airblade/vim-gitgutter'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
