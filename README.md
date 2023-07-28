@@ -151,6 +151,8 @@ Set according to `.config/.bashrc`, by default:
 - `grema` - `grem add`
 - `gremao` - `grema origin`
 - `gfch` - `git fetch`
+- `gfcha` - `gfch --all`
+- `gfchp` - `gfch --prune`
 - `giff` - `git diff`
 - `glog` - `git log`
 
