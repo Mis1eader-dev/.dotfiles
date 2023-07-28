@@ -48,6 +48,8 @@ alias grem='git remote'
 alias grema='grem add'
 alias gremao='grema origin'
 alias gfch='git fetch'
+alias gfcha='gfch --all'
+alias gfchp='gfch --prune'
 alias giff='git diff'
 alias glog='git log'
 
