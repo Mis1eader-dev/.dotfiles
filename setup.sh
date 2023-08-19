@@ -239,6 +239,11 @@ nvim +"TSInstallSync $TREESITTERS|qa"
 
 
 
+# Neovim Telescope dependency
+sudo apt install -y ripgrep
+
+
+
 # Don't show dotfiles untracked files
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME config status.showUntrackedFiles no
 
