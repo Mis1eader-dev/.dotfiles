@@ -204,7 +204,7 @@ fi
 
 # Node.js for Coc
 if ! which node > /dev/null; then
-	curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
+	curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash - &&\
 	sudo apt install -y nodejs
 fi
 
