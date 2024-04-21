@@ -1,7 +1,8 @@
 If:
   PathMatch: [.*\.c, .*\.h]
 CompileFlags:
-  Compile: gcc
+  Compiler: gcc
+  Add: [-ferror-limit=0]
 
 ---
 
@@ -9,4 +10,4 @@ If:
   PathMatch: [.*\.cpp, .*\.hpp, .*\.h]
 CompileFlags:
   Compiler: g++
-  Add: [-std=c++2b]
+  Add: [-std=c++2b, -ferror-limit=0]
