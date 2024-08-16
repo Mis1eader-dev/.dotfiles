@@ -14,5 +14,6 @@
 		"html"
 	],
 	"coc.preferences.enableLinkedEditing": true,
-	"inlayHint.enable": false
+	"inlayHint.enable": false,
+	"semanticTokens.enable": true
 }
