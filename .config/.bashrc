@@ -56,6 +56,9 @@ alias glog='git log'
 # Alias for shutdown
 alias sdown='sudo shutdown now'
 
+# Alias for python
+alias py='python'
+
 # Run our user from tmux
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
