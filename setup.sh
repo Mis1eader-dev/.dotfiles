@@ -87,7 +87,7 @@ BIN_DIR=/usr/bin
 # neovim
 NEOVIM_PATH=$BIN_DIR/nvim
 if ! test -f $NEOVIM_PATH; then
-	sudo curl -L https://github.com/neovim/neovim/releases/latest/download/nvim.appimage --create-dirs -o $NEOVIM_PATH
+	sudo curl -L https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage --create-dirs -o $NEOVIM_PATH
 	sudo chmod +x $NEOVIM_PATH
 fi
 
