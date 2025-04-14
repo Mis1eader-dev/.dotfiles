@@ -219,7 +219,7 @@ sudo ln -s /bin/python3 /bin/python
 # Ensure pip is installed
 sudo apt install -y python3-pip
 # Install pynvim for coc-snippets
-python -m pip install --user --upgrade pynvim
+sudo apt install -y python3-pynvim
 
 # Neovim Packer and Plugins
 echo 'Installing Neovim plugins'
