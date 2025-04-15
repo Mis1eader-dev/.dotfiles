@@ -4,10 +4,31 @@ if not hasModule then
 	return
 end
 
+local hasModule, theme = pcall(require, 'lualine.themes.auto')
+
+if not hasModule then
+	return
+end
+
+local color = '#121212'
+
+theme.normal.b.bg = color
+theme.normal.c.bg = color
+theme.insert.b.bg = color
+theme.insert.c.bg = color
+--theme.visual.b.bg = color
+--theme.visual.c.bg = color
+theme.replace.b.bg = color
+theme.replace.c.bg = color
+theme.command.b.bg = color
+theme.command.c.bg = color
+--theme.innactive.b.bg = color
+--theme.innactive.c.bg = color
+
 module.setup {
 	options = {
 		icons_enabled = true,
-		theme = 'auto',
+		theme = theme,
 		component_separators = { left = '', right = '' },
 		section_separators = { left = '', right = '' },
 		disabled_filetypes = {
