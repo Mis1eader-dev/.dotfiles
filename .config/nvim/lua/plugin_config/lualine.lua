@@ -16,14 +16,13 @@ theme.normal.b.bg = color
 theme.normal.c.bg = color
 theme.insert.b.bg = color
 theme.insert.c.bg = color
---theme.visual.b.bg = color
---theme.visual.c.bg = color
+theme.visual.b.bg = color
 theme.replace.b.bg = color
 theme.replace.c.bg = color
 theme.command.b.bg = color
 theme.command.c.bg = color
---theme.innactive.b.bg = color
---theme.innactive.c.bg = color
+theme.inactive.b.bg = color
+theme.inactive.c.bg = color
 
 module.setup {
 	options = {
